@@ -41,6 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\dev\projects\platformer\platformer\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -86,34 +87,46 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\ActionsMapping.cpp" />
+    <ClCompile Include="src\Collision.cpp" />
+    <ClCompile Include="src\DynamicScene.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Gamepad.cpp" />
     <ClCompile Include="src\Label.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\MainWindow.cpp" />
     <ClCompile Include="src\Moveable.cpp" />
+    <ClCompile Include="src\Platform.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\SceneManager.cpp" />
-    <ClCompile Include="src\TestScene.cpp" />
+    <ClCompile Include="src\Texture.cpp" />
+    <ClCompile Include="src\Xml\pugixml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controls\Gamepad.h" />
+    <ClInclude Include="src\Entities\Platform.h" />
     <ClInclude Include="src\Entities\Player.h" />
+    <ClInclude Include="src\Game\DynamicScene.h" />
     <ClInclude Include="src\Game\GameAction.h" />
-    <ClInclude Include="src\Game\Displayable.h" />
     <ClInclude Include="src\Game\DrawContext.h" />
     <ClInclude Include="src\Game\GameEntity.h" />
     <ClInclude Include="src\Game\Game.h" />
+    <ClInclude Include="src\Game\Logger.h" />
     <ClInclude Include="src\Game\MainWindow.h" />
     <ClInclude Include="src\Game\Moveable.h" />
+    <ClInclude Include="src\Game\Positionable.h" />
     <ClInclude Include="src\Game\Scene.h" />
     <ClInclude Include="src\Game\SceneManager.h" />
     <ClInclude Include="src\Game\TestScene.h" />
+    <ClInclude Include="src\Game\Texture.h" />
     <ClInclude Include="src\Game\UpdateContext.h" />
+    <ClInclude Include="src\Physics\Collision.h" />
     <ClInclude Include="src\Physics\PhysicsInfo.h" />
     <ClInclude Include="src\Platform\Platform.h" />
     <ClInclude Include="src\Entities\Ui\Label.h" />
+    <ClInclude Include="src\Xml\EntityFactory.h" />
+    <ClInclude Include="src\Xml\pugiconfig.hpp" />
+    <ClInclude Include="src\Xml\pugixml.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="data\fonts\basic.ttf">
@@ -123,6 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="build\post-build.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="data\scenes\test-scene.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

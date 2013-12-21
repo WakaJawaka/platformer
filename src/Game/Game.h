@@ -4,6 +4,7 @@
 
 #include "MainWindow.h"
 #include "SceneManager.h"
+#include "DynamicScene.h"
 
 namespace pf 
 {
@@ -34,5 +35,7 @@ namespace pf
 		std::shared_ptr<pf::MainWindow> _pMainWindow;
 
 		std::shared_ptr<pf::SceneManager> _pSceneManager;
+
+		std::shared_ptr<pf::DynamicScene> _pScene;
 	};
 }

@@ -2,8 +2,8 @@
 
 namespace pf
 {
-	ActionsMapping::ActionsMapping(const Gamepad& gamepad)
-		:_gamepad(gamepad)
+	ActionsMapping::ActionsMapping(const Gamepad& gamepad) :
+		_gamepad(gamepad)
 	{
 		buildActionsMapping();
 	}

@@ -36,6 +36,16 @@ namespace pf
 	{
 		return toString<long>(value);
 	}
+
+	inline int strToInt(std::string str)
+	{
+		return ::atoi(str.c_str());
+	}
+
+	inline float strToFloat(std::string str)
+	{
+		return (float) ::atof(str.c_str());
+	}
 }
 
 #endif

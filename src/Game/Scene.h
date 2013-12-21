@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <vector>
 
 #include "GameEntity.h"
@@ -8,10 +9,12 @@
 
 namespace pf
 {
+	typedef std::shared_ptr<GameEntity> GameEntityPtr;
+
 	class Scene
 	{
 	public:
-		Scene(const sf::String& name, const sf::Color& backgroundColor);
+		Scene();
 
 		virtual ~Scene();
 
@@ -28,8 +31,10 @@ namespace pf
 		virtual void onEvent(const sf::Event& e) = 0;
 
 	private:
-		sf::String _Name;
-		sf::Color _BackgroundColor;
-		std::vector<pf::GameEntity*> _Entities;
+		void getEntityCollisions(pf::GameEntity* entity, std::vector<pf::GameEntity*>& collisions);
+		
+		sf::String _name;
+		sf::Color _backgroundColor;
+		std::vector<GameEntityPtr> _entities;
 	};
 }

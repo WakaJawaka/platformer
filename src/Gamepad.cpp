@@ -2,8 +2,8 @@
 
 namespace pf
 {
-	Gamepad::Gamepad()
-		: _analogThreshold(20)
+	Gamepad::Gamepad() :
+		_analogThreshold(30)
 	{
 		buildButtonsMapping();
 	}

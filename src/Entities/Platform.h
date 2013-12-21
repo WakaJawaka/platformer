@@ -7,12 +7,12 @@
 
 namespace pf
 {
-	class Player: public pf::GameEntity, public pf::Moveable
+	class Platform: public pf::GameEntity, public pf::Positionable
 	{
 	public:
-		Player();
+		Platform(int width, int height, sf::Color color);
 
-		~Player();
+		~Platform();
 
 		void draw(const pf::DrawContext& context);
 
@@ -26,7 +26,5 @@ namespace pf
 	private:
 		std::shared_ptr<sf::Sprite> _pSprite;
 		std::shared_ptr<sf::Texture> _pTexture;
-
-		bool _jumpFlag;
 	};
 }

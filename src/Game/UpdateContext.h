@@ -1,6 +1,8 @@
 #pragma once
 
-#include "../Controls/Gamepad.h"
+#include <vector>
+
+#include "Controls/Gamepad.h"
 #include "GameAction.h"
 
 namespace pf
@@ -8,10 +10,11 @@ namespace pf
 	class UpdateContext
 	{
 	public:
-		UpdateContext(sf::Int64 elapsedTime, const pf::ActionsMapping& actionsMapping)
-			:actionsMapping(actionsMapping)
+		UpdateContext(sf::Int64 elapsedTime, const pf::ActionsMapping& actionsMapping) :
+			elapsedTime(elapsedTime),
+			actionsMapping(actionsMapping)
 		{
-			this->elapsedTime = elapsedTime;
+
 		}
 
 		sf::Int64 elapsedTime;

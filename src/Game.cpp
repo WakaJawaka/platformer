@@ -1,18 +1,19 @@
 #include "Game/Game.h"
 #include "Platform/Platform.h"
-
 #include "Game/TestScene.h"
+#include "Game/Logger.h"
 
 namespace pf 
 {
-	Game::Game()
-		: _pMainWindow(new pf::MainWindow("Platformer", 800, 600)),
-		  _pSceneManager(new pf::SceneManager()),
-		  _pGamepad(new pf::Gamepad()),
-		  _pActionsMapping(new pf::ActionsMapping(*_pGamepad)),
-		  _pClock(new sf::Clock())
+	Game::Game() :
+		_pMainWindow(new pf::MainWindow("Platformer", 800, 600)),
+		_pSceneManager(new pf::SceneManager()),
+		_pScene(new pf::DynamicScene()),
+		_pGamepad(new pf::Gamepad()),
+		_pActionsMapping(new pf::ActionsMapping(*_pGamepad)),
+		_pClock(new sf::Clock())
 	{
-
+		_pMainWindow->setFramerateLimit(60);
 	}
 
 	Game::~Game()
@@ -22,7 +23,11 @@ namespace pf
 
 	void Game::init()
 	{
-		_pSceneManager->setCurrentScene(new pf::TestScene());
+		Logger::getInstance().log("Initializing game");
+
+		_pScene->load("data/scenes/test-scene.xml");
+
+		_pSceneManager->setCurrentScene(_pScene.get());
 	}
 
 	void Game::start()

@@ -3,14 +3,17 @@
 
 namespace pf
 {
-	Player::Player()
-		:pf::GameEntity("player"), 
-		 pf::Moveable(0.0f, 0.0f, 5.0f, 200.0f),
+	Player::Player() : 
+		pf::GameEntity("player"), 
+		pf::Moveable(800.0f, 200.0f, 350.0f),
+		_jumpFlag(false),
 
-		 _pTexture(new sf::Texture())
+		_pTexture(new sf::Texture())
 	{
 		_pTexture->loadFromFile("data/images/player.png");
 
+		setSize(_pTexture->getSize());
+	
 		_pSprite = std::shared_ptr<sf::Sprite>(new sf::Sprite(*_pTexture));
 	}
 
@@ -18,7 +21,7 @@ namespace pf
 	{
 
 	}
-
+	
 	void Player::draw(const pf::DrawContext& context)
 	{
 		_pSprite->setPosition(getX(), getY());
@@ -26,7 +29,7 @@ namespace pf
 		context.pRenderWindow->draw(*_pSprite);
 	}
 
-	void Player::update(const pf::UpdateContext& context)
+	void Player::update(const pf::UpdateContext& context, std::vector<pf::GameEntity*>& collisions)
 	{
 		if(context.actionsMapping.isActionPressed(0, pf::GameAction::MOVE_RIGHT))
 		{
@@ -41,15 +44,20 @@ namespace pf
 			stopMoving();
 		}
 
-		if(context.actionsMapping.isActionPressed(0, pf::GameAction::RUN))
+		if(context.actionsMapping.isActionPressed(0, pf::GameAction::JUMP))
 		{
-			setMaxVelocity(400.0f);
+			if(!_jumpFlag)
+			{
+				jump();
+
+				_jumpFlag = true;
+			}
 		}
 		else
 		{
-			setMaxVelocity(200.0f);
+			_jumpFlag = false;
 		}
 
-		applyPhysics(context);
+		applyPhysics(context, collisions);
 	}
 }

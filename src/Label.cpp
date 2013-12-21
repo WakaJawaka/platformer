@@ -2,11 +2,10 @@
 
 namespace pf
 {
-	Label::Label(const sf::String& text, sf::Font& font, int size)
-		:pf::GameEntity("label"), 
-		 pf::Displayable(0.0f, 0.0f),
+	Label::Label(const sf::String& text, sf::Font& font, int size) : 
+		pf::GameEntity("label"),
 
-		 _Text(text, font, size)
+		_Text(text, font, size)
 	{
 
 	}
@@ -19,6 +18,10 @@ namespace pf
 	void Label::setText(const sf::String& text)
 	{
 		_Text.setString(text);
+
+		sf::FloatRect rect = _Text.getGlobalBounds();
+
+		setSize(rect.width, rect.height);
 	}
 
 	void Label::draw(const pf::DrawContext& context)
@@ -28,7 +31,7 @@ namespace pf
 		context.pRenderWindow->draw(_Text);
 	}
 
-	void Label::update(const pf::UpdateContext& context)
+	void Label::update(const pf::UpdateContext& context, std::vector<pf::GameEntity*>& collisions)
 	{
 
 	}

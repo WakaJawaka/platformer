@@ -2,7 +2,7 @@
 
 #include <hash_map>
 
-#include "../Controls/Gamepad.h"
+#include "Controls/Gamepad.h"
 
 namespace pf
 {
